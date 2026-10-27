@@ -30,17 +30,3 @@ WebView仅允许HTTPS的指定赛事详情页与同域资源，不加载广告�
 
 设置菜单提供支付宝和微信支付二维码，采用电视横屏并列显示。收款码内置在 APK 中，不上传到公开仓库。
 
-## 构建与测试
-
-JDK17–21、Android SDK34/Build Tools34、Gradle8.2、AGP8.2.0。Media3 1.3.1沿用已缓存版本；验证版先固定依赖，正式版升级另行验证。
-
-```sh
-./test-core.sh
-./gradlew assembleDebug lintDebug assembleRelease lintRelease
-```
-
-首次构建需要联网下载依赖。创建本机 `local.properties` 指定 `sdk.dir`；此文件不进入源码ZIP。release关闭调试，个人侧载沿用本机调试签名，源码包不含签名私钥，换机器构建签名可能不同。
-
-桌面/移动HTML回归样本位于 tests/fixtures，仅作解析测试，不打包进App。没有在代码中硬编码本次赛事ID或签名媒体地址。
-
-当前已验证的赛事和已知限制见交付目录“体育直播-0.1.0-验证记录.md”。
